@@ -1,0 +1,17 @@
+cars = []    # создаём список для данных о всех машинах
+with open('cars.csv') as f:
+    for a in f:
+        a = [i for i in a.strip().split(';')]
+        cars.append(a)
+
+new = open('red_car.txt', 'w', encoding='utf-8')    # файл для машин красного цвета
+
+for i in cars[1:]:
+    if i[5] == 'красный':
+        str = f'У {i[2]} {i[3]} есть машина красного цвета. Ее стоимость {i[0]}\n'
+        new.write(str)
+
+print('volvo')
+for i in cars:
+    if i[2] == 'volvo' and i[-1] == 'красный':
+        print(f'{i[3]} есть машина красного цвета. Ее стоимость {i[0]}')
